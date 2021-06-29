@@ -6,7 +6,7 @@
  * @param {Number} start
  * @param {Number} end
  */
-function douglasPeucker(points, epsilon = 0, start, end) {
+ function douglasPeucker(points, epsilon = 10, start, end) {
     start = start == null ? 0 : start;
     end = end == null ? points.length - 1 : end;
     if (end - start == 1) {
@@ -80,6 +80,5 @@ class _Vector {
     }
 }
 export {
-    douglasPeucker,
-    _Vector
+    douglasPeucker
 }
