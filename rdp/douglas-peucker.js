@@ -7,12 +7,12 @@
  * @param {Number} end
  */
  function douglasPeucker(points, epsilon = 10, start, end) {
+    if (!points || points.length == 0) return;
+    if (points.length < 3) {
+        return points.map((v) => [v[0], v[1]]);
+    }
     start = start == null ? 0 : start;
     end = end == null ? points.length - 1 : end;
-    if (end - start == 1) {
-        let r = [[points[start][0], points[start][1]], [points[end][0], points[end][1]]];
-        return r;
-    }
     let dmax = -Infinity;
     let index = -1;
     let v = new _Vector(points[end][0] - points[start][0], points[end][1] - points[start][1]);
@@ -25,7 +25,7 @@
         }
     }
 
-    if (dmax > epsilon) {
+    if (dmax > epsilon * epsilon) {
         let r1 = douglasPeucker(points, epsilon, start, index);
         let r2 = douglasPeucker(points, epsilon, index, end);
         r1.pop();
@@ -49,7 +49,7 @@ function _perpendicularDistanceSquare(p, p1, v) {
     let y = p1[1] + v.y * d;
     let dx = x - p[0];
     let dy = y - p[1];
-    return Math.sqrt(dx * dx + dy * dy);
+    return dx * dx + dy * dy;
 }
 
 /**
@@ -68,11 +68,6 @@ class _Vector {
         let l = this._length();
         this.x = this.x / l;
         this.y = this.y / l;
-    }
-
-    scale(s) {
-        this.x *= s;
-        this.y *= s;
     }
 
     dot(x, y) {

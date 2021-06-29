@@ -1,4 +1,4 @@
-import { douglasPeucker, _Vector } from './douglas-peucker.js';
+import { douglasPeucker } from './douglas-peucker.js';
 window.onload = (event) => {
     let canvas = document.getElementById('canvas');
     let ei = document.getElementById('epsilonValue');
