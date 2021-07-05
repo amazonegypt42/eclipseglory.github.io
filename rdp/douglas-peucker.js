@@ -6,7 +6,7 @@
  * @param {Number} start
  * @param {Number} end
  */
- function douglasPeucker(points, epsilon = 10, start, end) {
+function douglasPeucker(points, epsilon = 10, start, end) {
     if (!points || points.length == 0) return;
     if (points.length < 3) {
         return points.map((v) => [v[0], v[1]]);
@@ -42,6 +42,59 @@
         let r = [[points[start][0], points[start][1]], [points[end][0], points[end][1]]];
         return r;
     }
+}
+
+function smoothLines(pointsIn, curveTightness = 0.3) {
+    const len = pointsIn.length;
+    if (len < 3) {
+        throw new Error('A curve must have at least three points.');
+    }
+    const out = [];
+    if (len === 3) {
+        return [
+            {
+                x: pointsIn[0][0], y: pointsIn[0][1],
+                out: {
+                    x: pointsIn[1][0], y: pointsIn[1][1]
+                }
+            },
+            {
+                x: pointsIn[2][0], y: pointsIn[2][1],
+            }
+        ]
+    } else {
+        const points = [];
+        points.push(pointsIn[0], pointsIn[0]);
+        for (let i = 1; i < pointsIn.length; i++) {
+            points.push(pointsIn[i]);
+            if (i === (pointsIn.length - 1)) {
+                points.push(pointsIn[i]);
+            }
+        }
+        const b = [];
+        const s = 1 - curveTightness;
+        // out.push([points[0][0], points[0][0]]);
+        let pre = { x: points[0][0], y: points[0][1] };
+        out.push(pre);
+        let next;
+        for (let i = 1; (i + 2) < points.length; i++) {
+            const cachedVertArray = points[i];
+            b[0] = [cachedVertArray[0], cachedVertArray[1]];
+            b[1] = [cachedVertArray[0] + (s * points[i + 1][0] - s * points[i - 1][0]) / 6, cachedVertArray[1] + (s * points[i + 1][1] - s * points[i - 1][1]) / 6];
+            b[2] = [points[i + 1][0] + (s * points[i][0] - s * points[i + 2][0]) / 6, points[i + 1][1] + (s * points[i][1] - s * points[i + 2][1]) / 6];
+            b[3] = [points[i + 1][0], points[i + 1][1]];
+            pre.out = { x: b[1][0], y: b[1][1] };
+            next = {
+                x: b[3][0], y: b[3][1], in: {
+                    x: b[2][0], y: b[2][1]
+                }
+            };
+            out.push(next);
+            pre = next;
+            // out.push(b[1], b[2], b[3]);
+        }
+    }
+    return out;
 }
 
 /**
@@ -83,5 +136,6 @@ class _Vector {
     }
 }
 export {
-    douglasPeucker
+    douglasPeucker,
+    smoothLines
 }

@@ -1,4 +1,4 @@
-import { douglasPeucker } from './douglas-peucker.js';
+import { douglasPeucker, smoothLines } from './douglas-peucker.js';
 window.onload = (event) => {
     let canvas = document.getElementById('canvas');
     let ei = document.getElementById('epsilonValue');
@@ -78,11 +78,13 @@ window.onload = (event) => {
         start = false;
         if (rid) cancelAnimationFrame(rid);
         let ps = douglasPeucker(points, epsilon);
-        redraw(ctx, points, ps);
+        let out = smoothLines(ps);
+        console.log(out);
+        redraw(ctx, points, ps, out);
     }
 }
 
-function redraw(ctx, points, points2) {
+function redraw(ctx, points, points2, points3) {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = 'black';
@@ -103,6 +105,29 @@ function redraw(ctx, points, points2) {
         ctx.lineTo(points2[i][0], points2[i][1]);
     }
     ctx.stroke();
+
+    // ctx.beginPath();
+    // for (let i = 0; i < points3.length - 1; i++) {
+    //     ctx.moveTo(points3[i].x, points3[i].y);
+    //     if (points3[i].out != null && points3[i + 1].in != null) {
+    //         ctx.bezierCurveTo(points3[i].out.x, points3[i].out.y,
+    //             points3[i + 1].in.x, points3[i + 1].in.y, points3[i + 1].x, points3[i + 1].y);
+    //         continue;
+    //     }
+    //     if (points3[i].out != null && points3[i + 1].in == null) {
+    //         ctx.quadraticCurveTo(points3[i].out.x, points3[i].out.y, points3[i + 1].x, points3[i + 1].y);
+    //         continue;
+    //     }
+    //     if (points3[i].out == null && points3[i + 1].in != null) {
+    //         ctx.quadraticCurveTo(points3[i + 1].in.x, points3[i + 1].in.y, points3[i + 1].x, points3[i + 1].y);
+    //         continue;
+    //     }
+    //     if (points3[i].out == null && points3[i + 1].in == null) {
+    //         ctx.lineTo(points3[i + 1].x, points3[i + 1].y);
+    //         continue;
+    //     }
+    // }
+    // ctx.stroke();
 
     points2.forEach(p => {
         ctx.beginPath();
