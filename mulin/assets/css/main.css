@@ -76,6 +76,12 @@ Template Brown
     color:#777777
 }
 
+.loading-container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .rotate-cursor{
   cursor:url(assets/images/cursor-rotate.png),auto;
 }
@@ -85,8 +91,8 @@ Template Brown
 }
 
 .fadeout{
-    -webkit-animation: arrowOut 0.5s linear forwards;
-    animation: arrowOut 0.5s linear forwards;
+    -webkit-animation: arrowOut 0.3s linear forwards;
+    animation: arrowOut 0.3s linear forwards;
 }
 
 .gray-splitter{
@@ -105,47 +111,21 @@ Template Brown
     from {opacity:1}
     to {opacity:0}
 }
-
-.property-item {
-    display: flex;
-    color: whitesmoke;
-    justify-content: center;
-    width: 100%;
-    align-items: baseline;
-    box-sizing: border-box;
-    padding: 5px 0 5px 0;
-  }
   
-  .property-lable {
+  .property-label {
     padding-right: 5px;
     padding-left: 5px;
     box-sizing: border-box;
+    text-align: left;
+    max-width:30%;
   }
   
   .disabled-label {
     color: #777777;
   }
-  
-  .property-input {
-    border: none;
-    background-color: transparent;
-    color: whitesmoke;
-    border-bottom: #444444 solid 1px;
-    border-radius: 0;
+
+  .property-value{
+      max-width: 70%;
+      text-align: center;
   }
   
-  .property-input:focus {
-    color: whitesmoke;
-    background-color: transparent;
-    box-shadow: none;
-    border-bottom: whitesmoke solid 1px;
-    border-radius: 0;
-  }
-  
-  .property-input:disabled {
-    border: none;
-    background-color: transparent;
-    color: whitesmoke;
-    border-bottom: #444444 solid 1px;
-    border-radius: 0;
-  }

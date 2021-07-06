@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2533421 */
-  src: url('iconfont.woff2?t=1620923556138') format('woff2'),
-       url('iconfont.woff?t=1620923556138') format('woff'),
-       url('iconfont.ttf?t=1620923556138') format('truetype');
+  src: url('iconfont.woff2?t=1625544958650') format('woff2'),
+       url('iconfont.woff?t=1625544958650') format('woff'),
+       url('iconfont.ttf?t=1625544958650') format('truetype');
 }
 
 .iconfont {
@@ -12,8 +12,140 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-line2:before {
-  content: "\e66b";
+.icon-GitHub:before {
+  content: "\e601";
+}
+
+.icon-pen-curve:before {
+  content: "\e63e";
+}
+
+.icon-l-gradient:before {
+  content: "\e887";
+}
+
+.icon-cancel:before {
+  content: "\e695";
+}
+
+.icon-r-gradient:before {
+  content: "\e6a6";
+}
+
+.icon-width:before {
+  content: "\e654";
+}
+
+.icon-height:before {
+  content: "\e655";
+}
+
+.icon-cap-square:before {
+  content: "\e66d";
+}
+
+.icon-cap-round:before {
+  content: "\e66e";
+}
+
+.icon-cap-butt:before {
+  content: "\e66f";
+}
+
+.icon-join-miter:before {
+  content: "\e6b6";
+}
+
+.icon-join-bevel:before {
+  content: "\e6b7";
+}
+
+.icon-join-round:before {
+  content: "\e6b8";
+}
+
+.icon-rotation:before {
+  content: "\ea64";
+}
+
+.icon-font-size:before {
+  content: "\e659";
+}
+
+.icon-line-spacing:before {
+  content: "\e720";
+}
+
+.icon-font-family:before {
+  content: "\e647";
+}
+
+.icon-angle:before {
+  content: "\e612";
+}
+
+.icon-text-spacing:before {
+  content: "\e73e";
+}
+
+.icon-y-skew:before {
+  content: "\e6fe";
+}
+
+.icon-x-skew:before {
+  content: "\e6ff";
+}
+
+.icon-scale-y:before {
+  content: "\e95f";
+}
+
+.icon-scaly-x:before {
+  content: "\e960";
+}
+
+.icon-copy:before {
+  content: "\ef86";
+}
+
+.icon-paste:before {
+  content: "\f068";
+}
+
+.icon-image:before {
+  content: "\e613";
+}
+
+.icon-v-text:before {
+  content: "\e82f";
+}
+
+.icon-text-align-center:before {
+  content: "\ef12";
+}
+
+.icon-text-align-left:before {
+  content: "\ef14";
+}
+
+.icon-text-align-right:before {
+  content: "\ef15";
+}
+
+.icon-text:before {
+  content: "\e81a";
+}
+
+.icon-text-align-mid:before {
+  content: "\e604";
+}
+
+.icon-text-align-top:before {
+  content: "\e607";
+}
+
+.icon-text-align-bottom:before {
+  content: "\e609";
 }
 
 .icon-line:before {
@@ -37,7 +169,7 @@
 }
 
 .icon-distribute-bottom:before {
-  content: "\e845";
+  content: "\f2d4";
 }
 
 .icon-align-center:before {
@@ -172,11 +304,11 @@
   content: "\e6cb";
 }
 
-.icon-share-button:before {
+.icon-vertices:before {
   content: "\e600";
 }
 
-.icon-vector-polygon:before {
+.icon-path-shape:before {
   content: "\e610";
 }
 
